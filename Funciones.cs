@@ -57,10 +57,8 @@ namespace Conexion
 
         }
 
-        public void Listaproveedores(DataGridView datagrid)
+        public void Llenargrid(DataGridView datagrid, string store)
         {
-            string store;
-            store = "SP_LISTA_PROVEEDORES";
             SqlConnection cnn = DbConnection.getDBConnection();
             SqlDataAdapter da = new SqlDataAdapter(store, cnn);
             DataSet ds = new DataSet();
@@ -71,24 +69,6 @@ namespace Conexion
             //mostrar en tabla
             datagrid.DataSource = ds;
             datagrid.DataMember = "store";
-
-        }
-
-        public void Listaclientes(DataGridView datagrid)
-        {
-            string store;
-            store = "SP_LISTA_CLIENTES";
-            SqlConnection cnn = DbConnection.getDBConnection();
-            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
-            DataSet ds = new DataSet();
-
-            da.Fill(ds, "store");
-            cnn.Close();
-
-            //mostrar en tabla
-            datagrid.DataSource = ds;
-            datagrid.DataMember = "store";
-
         }
     }
 }

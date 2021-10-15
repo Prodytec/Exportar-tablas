@@ -56,6 +56,17 @@ namespace Conexion
                     mtxthasta.Visible = false;
                     txtlista.Visible = false;
                     return;
+                case "casaosvaldo":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Listado");
+                    cmb.SelectedItem = cmb.Items[0];
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    lblhasta.Visible = false;
+                    mtxtdesde.Visible = false;
+                    mtxthasta.Visible = false;
+                    txtlista.Visible = false;
+                    return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
                     Close();
@@ -113,11 +124,24 @@ namespace Conexion
                     }
                     else if (cmb.SelectedIndex == 1)
                     {
-                        F.Listaclientes(grilla);
+                        string spclientes = "SP_LISTA_CLIENTES";
+                        F.Llenargrid(grilla, spclientes);
                     }
                     else if(cmb.SelectedIndex == 2)
                     {
-                        F.Listaproveedores(grilla);
+                        string splista = "SP_LISTA_PROVEEDORES";
+                        F.Llenargrid(grilla, splista);
+                    }
+                    return;
+                case "casaosvaldo":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        string sposvaldo = "SP_INFO_CASAOSVALDO";
+                        F.Llenargrid(grilla, sposvaldo);
                     }
                     return;
             }
