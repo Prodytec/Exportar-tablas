@@ -70,5 +70,34 @@ namespace Conexion
             datagrid.DataSource = ds;
             datagrid.DataMember = "store";
         }
+
+        public void Llenargrid(DataGridView datagrid, string store, ComboBox combo)
+        {
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
+            DataSet ds = new DataSet();
+
+            da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            da.SelectCommand.Parameters.AddWithValue("@idproveedor", combo.SelectedValue.ToString());
+            da.Fill(ds, "store");
+            cnn.Close();
+
+            //mostrar en tabla
+            datagrid.DataSource = ds;
+            datagrid.DataMember = "store";
+        }
+
+        public void Llenarcombo(ComboBox combo)
+        {
+            string consulta = "select Nombre, idproveedor from proveedores order by Nombre";
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(consulta, cnn);
+            DataTable lista = new DataTable();
+            da.Fill(lista);
+
+            combo.DisplayMember = "Nombre";
+            combo.ValueMember = "idproveedor";
+            combo.DataSource = lista;
+        }
     }
 }

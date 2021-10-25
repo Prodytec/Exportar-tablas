@@ -30,7 +30,7 @@ namespace Conexion
         string Valor = (string)Instalacion.GetValor();
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            Funciones F = new Funciones();
 
             switch (Valor.ToLower())
             {
@@ -67,6 +67,17 @@ namespace Conexion
                     mtxthasta.Visible = false;
                     txtlista.Visible = false;
                     return;
+                case "brm":
+                    cmb.Items.Add("Seleccione opcion");
+                    F.Llenarcombo(cmb);
+                    cmb.SelectedItem = cmb.Items[0];
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    lblhasta.Visible = false;
+                    mtxtdesde.Visible = false;
+                    mtxthasta.Visible = false;
+                    txtlista.Visible = false;
+                    return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
                     Close();
@@ -74,8 +85,6 @@ namespace Conexion
             }
         }
        
-
-
         private void Btnexportar_Click(object sender, EventArgs e)
         {
             Excel ex = new Excel();
@@ -92,8 +101,6 @@ namespace Conexion
         private void btnprocesar_Click(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
-
-
 
             switch (Valor.ToLower())
             {
@@ -142,6 +149,17 @@ namespace Conexion
                     {
                         string sposvaldo = "SP_INFO_CASAOSVALDO";
                         F.Llenargrid(grilla, sposvaldo);
+                    }
+                    return;
+                case "brm":
+                    if(cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else 
+                    {
+                        string spbrm = "LISTA_PROVEEDORES_BRM";
+                        F.Llenargrid(grilla, spbrm, cmb);
                     }
                     return;
             }
