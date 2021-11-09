@@ -86,6 +86,9 @@ namespace Conexion
                     lbldesde.Visible = false;
                     lblhasta.Visible = false;
                     txtlista.Visible = false;
+                    cmb.TabIndex = 0;
+                    mtxtdesde.TabIndex = 1;
+                    mtxthasta.TabIndex = 2;
                     return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
