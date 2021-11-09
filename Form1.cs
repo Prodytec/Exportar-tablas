@@ -78,6 +78,15 @@ namespace Conexion
                     mtxthasta.Visible = false;
                     txtlista.Visible = false;
                     return;
+                case "grievas":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Dias Promedio de Pago - Clientes");
+                    cmb.SelectedItem = cmb.Items[0];
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    lblhasta.Visible = false;
+                    txtlista.Visible = false;
+                    return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
                     Close();
@@ -111,7 +120,8 @@ namespace Conexion
                     }
                     else if (cmb.SelectedIndex == 1)
                     {
-                        F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla);
+                        string store = "sp_pedidos_de_clientes";
+                        F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla, store);
                     }
                     return;
                 case "candies":
@@ -160,6 +170,17 @@ namespace Conexion
                     {
                         string spbrm = "LISTA_PROVEEDORES_BRM";
                         F.Llenargrid(grilla, spbrm, cmb);
+                    }
+                    return;
+                case "grievas":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        string store = "Dias_Promedio_de_Pago_grievas";
+                        F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla, store);
                     }
                     return;
             }

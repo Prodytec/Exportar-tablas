@@ -89,7 +89,7 @@
             this.cmb.FormattingEnabled = true;
             this.cmb.Location = new System.Drawing.Point(39, 12);
             this.cmb.Name = "cmb";
-            this.cmb.Size = new System.Drawing.Size(153, 21);
+            this.cmb.Size = new System.Drawing.Size(188, 21);
             this.cmb.TabIndex = 1;
             this.cmb.SelectedIndexChanged += new System.EventHandler(this.cmb_SelectedIndexChanged);
             // 

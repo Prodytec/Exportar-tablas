@@ -14,11 +14,10 @@ namespace Conexion
 {
     class Funciones
     {
-        public void Pedidosdeclientes(MaskedTextBox desde, MaskedTextBox Hasta, DataGridView datagrid)
+        public void Pedidosdeclientes(MaskedTextBox desde, MaskedTextBox Hasta, DataGridView datagrid, string store)
         {
             //llamo al store
-            string store;
-            store = "sp_pedidos_de_clientes";
+            
             SqlConnection cnn = DbConnection.getDBConnection();
             SqlDataAdapter da = new SqlDataAdapter(store, cnn);
             DataSet ds = new DataSet();
