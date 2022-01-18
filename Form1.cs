@@ -90,6 +90,27 @@ namespace Conexion
                     mtxtdesde.TabIndex = 1;
                     mtxthasta.TabIndex = 2;
                     return;
+                case "komsa":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Stock Valorizado");
+                    cmb.SelectedItem = cmb.Items[0];
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    txtlista.Visible = false;
+                    mtxtdesde.Visible = false;
+                    return;
+                case "procopias":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Control Precio Minimo");
+                    cmb.SelectedItem = cmb.Items[0];
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    txtlista.Visible = false;
+                    mtxtdesde.Visible = false;
+                    lblhasta.Visible = false;
+                    mtxthasta.Visible = false;
+                    Btnexportar.Visible = false;
+                    return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
                     Close();
@@ -113,6 +134,9 @@ namespace Conexion
         private void btnprocesar_Click(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
+            //btnprocesar.BackColor = Color.Red;
+            //btnprocesar.Text = "PROCESANDO...";
+
 
             switch (Valor.ToLower())
             {
@@ -184,6 +208,31 @@ namespace Conexion
                     {
                         string store = "Dias_Promedio_de_Pago_grievas";
                         F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla, store);
+                    }
+                    return;
+                case "procopias":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        string store = "sp_ControlPrecioMinimo";
+                        F.ControlPrecioMinimo(grilla, store);
+                        btnprocesar.Visible = false;
+                        Btnsalir.Focus();
+
+                    }
+                    return;
+                case "komsa":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        string store = "sp_StkValorizadoaFecha";              
+                        F.stkvalorizado(mtxthasta, grilla, store);
                     }
                     return;
             }

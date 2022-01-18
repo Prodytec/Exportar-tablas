@@ -98,5 +98,36 @@ namespace Conexion
             combo.ValueMember = "idproveedor";
             combo.DataSource = lista;
         }
+
+        public void stkvalorizado(MaskedTextBox Hasta, DataGridView datagrid, string store)
+        {
+            //llamo al store                                  ////maty
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
+            DataSet ds = new DataSet();
+
+            //parametros
+            da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            da.SelectCommand.Parameters.AddWithValue("@Hasta", Hasta.Text.ToString());   //respetar nombre parametro
+            da.Fill(ds, "store");
+            cnn.Close();
+
+            //mostrar en tabla
+            datagrid.DataSource = ds;
+            datagrid.DataMember = "store";
+        }
+
+        public void ControlPrecioMinimo(DataGridView datagrid, string store)
+        {
+            //llamo al store                                  
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
+            DataSet ds = new DataSet();
+            //da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            da.Fill(ds, "store");
+            cnn.Close();
+            datagrid.DataSource = ds;
+            datagrid.DataMember = "store";
+        }
     }
 }
