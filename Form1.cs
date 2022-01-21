@@ -121,7 +121,6 @@ namespace Conexion
                     mtxtdesde.Visible = false;
                     lblhasta.Visible = false;
                     mtxthasta.Visible = false;
-                    Btnexportar.Visible = false;
                     return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
