@@ -111,6 +111,18 @@ namespace Conexion
                     mtxthasta.Visible = false;
                     Btnexportar.Visible = false;
                     return;
+                case "veneta":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Historico de Cotizaciones");
+                    cmb.SelectedItem = cmb.Items[0];
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    txtlista.Visible = false;
+                    mtxtdesde.Visible = false;
+                    lblhasta.Visible = false;
+                    mtxthasta.Visible = false;
+                    Btnexportar.Visible = false;
+                    return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
                     Close();
@@ -233,6 +245,19 @@ namespace Conexion
                     {
                         string store = "sp_StkValorizadoaFecha";              
                         F.stkvalorizado(mtxthasta, grilla, store);
+                    }
+                    return;
+                case "veneta":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        string store = "sp_HistoricoDolar";
+                        F.Llenargrid(grilla, store);
+                        btnprocesar.Visible = false;
+                        Btnsalir.Focus();
                     }
                     return;
             }
