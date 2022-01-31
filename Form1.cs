@@ -404,6 +404,9 @@ namespace Conexion
 
         }
 
-        
+        private void grilla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
