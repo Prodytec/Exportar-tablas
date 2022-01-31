@@ -39,6 +39,7 @@
             this.mtxthasta = new System.Windows.Forms.MaskedTextBox();
             this.txtlista = new System.Windows.Forms.TextBox();
             this.lbllista = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,21 @@
             this.lbllista.TabIndex = 13;
             this.lbllista.Text = "Lista";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(690, 152);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Exportar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lbllista);
             this.Controls.Add(this.txtlista);
             this.Controls.Add(this.mtxthasta);
@@ -185,6 +196,7 @@
         private System.Windows.Forms.MaskedTextBox mtxthasta;
         private System.Windows.Forms.TextBox txtlista;
         private System.Windows.Forms.Label lbllista;
+        private System.Windows.Forms.Button button1;
     }
 }
 
