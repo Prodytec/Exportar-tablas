@@ -145,9 +145,7 @@ namespace Conexion
         private void btnprocesar_Click(object sender, EventArgs e)
         {
             Funciones F = new Funciones();
-            //btnprocesar.BackColor = Color.Red;
-            //btnprocesar.Text = "PROCESANDO...";
-
+           
 
             switch (Valor.ToLower())
             {
