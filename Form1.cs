@@ -19,9 +19,6 @@ namespace Conexion
 {
     public partial class Exportar : Form
     {
-
-        
-        
         public Exportar()
         {
             InitializeComponent();
@@ -37,6 +34,7 @@ namespace Conexion
                 case "casavictor":
                     cmb.Items.Add("Seleccione opcion");
                     cmb.Items.Add("Pedidos de clientes");
+                    cmb.Items.Add("Informe Clientes");
                     cmb.SelectedItem = cmb.Items[0];
                     return;
                 case "candies":
@@ -160,6 +158,11 @@ namespace Conexion
                     {
                         string store = "sp_pedidos_de_clientes";
                         F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla, store);
+                    }
+                    else if (cmb.SelectedIndex == 2)
+                    {
+                        string Informe_cli = "Informes_clientes_casavictor";
+                        F.Llenargrid(grilla, Informe_cli);
                     }
                     return;
                 case "candies":
