@@ -35,6 +35,7 @@ namespace Conexion
                     cmb.Items.Add("Seleccione opcion");
                     cmb.Items.Add("Pedidos de clientes");
                     cmb.Items.Add("Informe Clientes");
+                    cmb.Items.Add("Informe despachos");
                     cmb.SelectedItem = cmb.Items[0];
                     return;
                 case "candies":
@@ -161,6 +162,11 @@ namespace Conexion
                     {
                         string Informe_cli = "Informes_clientes_casavictor";
                         F.Llenargrid(grilla, Informe_cli);
+                    }
+                    else if(cmb.SelectedIndex == 3)
+                    {
+                        string Informe_despacho = "Despachos_casa_victor";
+                        F.Llenargrid(grilla, Informe_despacho);
                     }
                     return;
                 case "candies":
